@@ -1,3 +1,20 @@
+// responsive functionn
+@mixin mobile {
+  @media (max-width: 480px) {
+    @content;
+}
+}
+@mixin tablet {
+  @media (max-width: 768px) {
+    @content;
+}
+}
+@mixin laptop {
+  @media (max-width: 1200px) {
+    @content;
+}
+}
+
 /* Form styles */
 body {
   margin: 0;
@@ -53,6 +70,7 @@ body {
         font-weight: bold;
         border: none;
         cursor: pointer;
+
       }
 
       label {
@@ -88,10 +106,12 @@ body {
     width: 65%;
     height: 80%;
     display: flex;
+    
 
     .sidebar {
       flex: 1;
       background-color: #3e3c61;
+      position: relative;
 
       .navbar {
         display: flex;
@@ -104,6 +124,9 @@ body {
 
         .logo {
           font-weight: bold;
+          @include tablet {
+            display: none;
+          }
         }
 
         .user {
@@ -124,6 +147,12 @@ body {
             font-size: 10px;
             border: none;
             cursor: pointer;
+            @include tablet {
+              position: absolute;
+              bottom: 10px;
+
+
+            }
           }
         }
       }
