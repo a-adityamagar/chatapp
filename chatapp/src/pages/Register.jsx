@@ -1,5 +1,6 @@
 import React from 'react';
 import "../App.css";
+import { Link } from 'react-router-dom';
 import {Icon} from '@iconify/react';
 
 function Register() {
@@ -19,7 +20,7 @@ function Register() {
                 </label>
                 <button>Sign Up</button>
             </form>
-            <p>You do have an account? Login</p>
+            <p>You do have an account? <Link to ="/login">Login</Link></p>
         </div>
 
     </div>
