@@ -14,7 +14,7 @@ import {
 const uploadToCloudinary = async (file) => {
   const formData = new FormData();
   formData.append("file", file);
-  formData.append("upload_preset", "ml_default");
+  formData.append("upload_preset", "chat_uploads");
   formData.append("cloud_name", "dipppi7yr");
 
   try {
