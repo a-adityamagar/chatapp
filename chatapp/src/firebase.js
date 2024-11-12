@@ -6,13 +6,12 @@ const firebaseConfig = {
   apiKey: "AIzaSyBxRmQb_KsU2IURxEU-Q1OWBzV1OjC4oZQ",
   authDomain: "chatapp-5b1a6.firebaseapp.com",
   projectId: "chatapp-5b1a6",
-  storageBucket: "chatapp-5b1a6.firebasestorage.app",
+  storageBucket: "chatapp-5b1a6.appspot.com",
   messagingSenderId: "993987133726",
   appId: "1:993987133726:web:c3dcbf36b589c120e6090f",
   measurementId: "G-28MWXJHSQE"
 };
 
-// Initialize Firebase
 export const app = initializeApp(firebaseConfig);
-export const auth = getAuth();
-export const db = getFirestore();
+export const auth = getAuth(app);
+export const db = getFirestore(app);
