@@ -12,9 +12,9 @@ function Chat() {
       <div className="chatInfo">
         <span>{data.user?.displayName}</span>
         <div className="chatIcons">
-          <Icon icon="ph:video-camera-fill" style={{ color: "white" }} />
-          <Icon icon="mingcute:user-add-fill" style={{ color: "white" }} />
-          <Icon icon="ant-design:more-outlined" style={{ color: "white" }} />
+          <Icon icon="ph:video-camera-fill" className="icon" />
+          <Icon icon="mingcute:user-add-fill" className="icon" />
+          <Icon icon="ant-design:more-outlined" className="icon" />
         </div>
       </div>
       <Messages />

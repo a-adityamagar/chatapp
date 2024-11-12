@@ -1,41 +1,32 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from "react";
 import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase";
 import { ChatContext } from "../context/ChatContext";
-import Message from './Message';
+import Message from "./Message";
 
-function Messages() {
+const Messages = () => {
   const [messages, setMessages] = useState([]);
   const { data } = useContext(ChatContext);
 
   useEffect(() => {
     if (!data.chatId) return;
 
-    const unSub = onSnapshot(doc(db, "chats", data.chatId), (doc) => {
+    const unsub = onSnapshot(doc(db, "chats", data.chatId), (doc) => {
       if (doc.exists()) {
-        const messagesData = doc.data().messages || [];
-        // Ensure each message has required properties
-        const validMessages = messagesData.map(msg => ({
-          ...msg,
-          id: msg.id || Math.random().toString(),
-          photoURL: msg.photoURL || '',  // Provide default empty string
-        }));
-        setMessages(validMessages);
+        setMessages(doc.data().messages || []);  
       }
     });
 
-    return () => {
-      unSub && unSub();
-    };
+    return () => unsub();
   }, [data.chatId]);
 
   return (
-    <div className='messages'>
-      {messages.map((m) => (
-        <Message message={m} key={m.id} />
+    <div className="messages">
+      {messages.map((msg) => (
+        <Message key={msg.id} message={msg} />
       ))}
     </div>
   );
-}
+};
 
 export default Messages;
