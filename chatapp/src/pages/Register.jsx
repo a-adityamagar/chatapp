@@ -19,10 +19,10 @@ function Register() {
     const password = e.target[2].value;
 
     try {
-      // Create user first
+     
       const res = await createUserWithEmailAndPassword(auth, email, password);
 
-      // Create user document in Firestore with all data
+     
       await setDoc(doc(db, "users", res.user.uid), {
         uid: res.user.uid,
         displayName,
@@ -30,13 +30,12 @@ function Register() {
         photoURL: "https://api.dicebear.com/7.x/avataaars/svg?seed=" + displayName,
       });
 
-      // Update profile with display name and avatar
+      
       await updateProfile(res.user, {
         displayName,
         photoURL: "https://api.dicebear.com/7.x/avataaars/svg?seed=" + displayName,
       });
 
-      // Create empty user chats document
       await setDoc(doc(db, "userChats", res.user.uid), {});
       
       setLoading(false);
