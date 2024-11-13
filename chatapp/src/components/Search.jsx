@@ -11,7 +11,7 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 import { AuthContext } from "../context/AuthContext";
-import { db } from "../firebase"; // Make sure to import your firebase instance
+import { db } from "../firebase";
 
 function Search() {
   const [username, setUsername] = useState("");
@@ -51,7 +51,7 @@ function Search() {
       const chatDoc = await getDoc(chatDocRef);
 
       if (!chatDoc.exists()) {
-        // If chat doesn't exist, create a new one
+      
         await setDoc(chatDocRef, { messages: [] });
 
         const userChatData = {
@@ -77,7 +77,7 @@ function Search() {
           },
         });
       } else {
-        // If chat already exists, update the `date` field to bring it to the top
+   
         await updateDoc(doc(db, "userChats", currentUser.uid), {
           [`${combinedId}.date`]: serverTimestamp(),
         });
@@ -86,7 +86,7 @@ function Search() {
         });
       }
 
-      // Reset the search input and user data after selecting a user
+  
       setUser(null);
       setUsername("");
     } catch (err) {

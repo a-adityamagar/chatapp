@@ -14,12 +14,12 @@ import {
 const uploadToCloudinary = async (file) => {
   const formData = new FormData();
   formData.append("file", file);
-  formData.append("upload_preset", "chat_uploads");
-  formData.append("cloud_name", "dipppi7yr");
+  formData.append("upload_preset", "your_cloudinary_preset");
+  formData.append("cloud_name", "your_cloudinary_name");
 
   try {
     const response = await fetch(
-      "https://api.cloudinary.com/v1_1/dipppi7yr/image/upload",
+      "https://api.cloudinary.com/v1_1/your_cloudinary_name/image/upload",
       {
         method: "POST",
         body: formData,
@@ -62,13 +62,13 @@ function Input() {
         img: mediaUrl
       };
 
-      // Update chat messages
+
       const chatRef = doc(db, "chats", data.chatId);
       await updateDoc(chatRef, {
         messages: arrayUnion(message)
       });
 
-      // Update last message for both users
+   
       const userChatUpdate = {
         [`${data.chatId}.lastMessage`]: { text: text.trim() },
         [`${data.chatId}.date`]: serverTimestamp(),
@@ -79,11 +79,11 @@ function Input() {
         updateDoc(doc(db, "userChats", data.user.uid), userChatUpdate)
       ]);
 
-      // Clear input fields
+   
       setText("");
       setMedia(null);
       
-      // Reset file input
+      
       const fileInput = document.getElementById("file");
       if (fileInput) {
         fileInput.value = "";
