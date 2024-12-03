@@ -14,12 +14,12 @@ import {
 const uploadToCloudinary = async (file) => {
   const formData = new FormData();
   formData.append("file", file);
-  formData.append("upload_preset", "your_cloudinary_preset");
-  formData.append("cloud_name", "your_cloudinary_name");
+  formData.append("upload_preset", "chat_uploads");
+  formData.append("cloud_name", "dipppi7yr");
 
   try {
     const response = await fetch(
-      "https://api.cloudinary.com/v1_1/your_cloudinary_name/image/upload",
+      "https://api.cloudinary.com/v1_1/dipppi7yr/image/upload",
       {
         method: "POST",
         body: formData,
