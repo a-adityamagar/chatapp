@@ -3,7 +3,7 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBxRmQb_KsU2IURxEU-Q1OWBzV1OjC4oZQ",
+  apiKey: "Your API Key",
   authDomain: "chatapp-5b1a6.firebaseapp.com",
   projectId: "chatapp-5b1a6",
   storageBucket: "chatapp-5b1a6.appspot.com",
